@@ -7,6 +7,9 @@ import Login from './paginas/login/Login';
 import Cadastro from './paginas/cadastro/Cadastro';
 import Home from './paginas/home/Home';
 import { AuthProvider } from './contexts/AuthContext';
+import ListaTemas from './components/temas/listaTemas/ListaTemas';
+import FormularioTema from './components/temas/formularioTemas/FormularioTemas';
+import DeletarTema from './components/temas/deletarTemas/DeletarTemas';
 
 
 function App() {
@@ -21,6 +24,10 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/home" element={<Home />} />
+              <Route path="/temas" element={<ListaTemas />} />
+              <Route path="/cadastroTema" element={<FormularioTema />} />
+              <Route path="/editarTema/:id" element={<FormularioTema />} />
+              <Route path="/deletarTema/:id" element={<DeletarTema />} />
             </Routes>
           </div>
           <Footer />
