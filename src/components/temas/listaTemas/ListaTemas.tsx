@@ -5,6 +5,7 @@ import { AuthContext } from '../../../contexts/AuthContext';
 import Tema from '../../../models/Tema';
 import { buscar } from '../../../services/Service';
 import CardTemas from '../cardTemas/CardTemas';
+import { toastAlerta } from '../../../util/toastAlerta/toastAlerta';
 
 
 // Organizando a lógica do ListaTemas. Estrutura do hook useState. O useState será responsável por armazenar um array que contém objetos com a estrutura de nossa model Temas (id e descrição) e deve começar vazio, logo []. Não esquecer de importar Tema. 
@@ -29,7 +30,7 @@ function ListaTemas(){
             });
     } catch (error: any) {
         if (error.toString().includes('403')) {
-          alert('O token expirou, favor logar novamente')
+          toastAlerta('O token expirou, favor logar novamente', 'info') //Informa o tipo de toastAlerta "info".
           handleLogout()
         }
     }
@@ -39,7 +40,7 @@ function ListaTemas(){
 
     useEffect(() => {
         if (token === '') {
-          alert('Você precisa estar logado');
+          toastAlerta('Você precisa estar logado', 'info'); //Informa o tipo de toastAlerta "info".
           navigate('/login');
         }
       }, [token]);

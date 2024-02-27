@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthContext';
 import Tema from '../../../models/Tema';
 import { atualizar, buscar, cadastrar } from '../../../services/Service';
+import { toastAlerta } from '../../../util/toastAlerta/toastAlerta';
 
 function FormularioTema() {
   const [tema, setTema] = useState<Tema>({} as Tema);
@@ -48,15 +49,15 @@ function FormularioTema() {
           }
         })
 
-        alert('Tema atualizado com sucesso')
+        toastAlerta('Tema atualizado com sucesso', 'sucesso') //Informa o tipo de toastAlerta "sucesso".
         retornar()
 
       } catch (error: any) {
         if (error.toString().includes('403')) {
-          alert('O token expirou, favor logar novamente')
+          toastAlerta('O token expirou, favor logar novamente', 'info') //Informa o tipo de toastAlerta "info".
           handleLogout()
         } else {
-          alert('Erro ao atualizar o Tema')
+          toastAlerta('Erro ao atualizar o Tema', 'erro') //Informa o tipo de toastAlerta "erro".
         }
 
       }
@@ -69,14 +70,14 @@ function FormularioTema() {
           }
         })
 
-        alert('Tema cadastrado com sucesso')
+        toastAlerta('Tema cadastrado com sucesso', 'sucesso') //Informa o tipo de toastAlerta "sucesso".
 
       } catch (error: any) {
         if (error.toString().includes('403')) {
-          alert('O token expirou, favor logar novamente')
+          toastAlerta('O token expirou, favor logar novamente', 'info') //Informa o tipo de toastAlerta "info".
           handleLogout()
         } else {
-          alert('Erro ao cadastrado o Tema')
+          toastAlerta('Erro ao cadastrado o Tema', 'erro') //Informa o tipo de toastAlerta "erro".
         }
       }
     }
@@ -90,8 +91,8 @@ function FormularioTema() {
 
   useEffect(() => {
     if (token === '') {
-      alert('Você precisa estar logado');
-      navigate('/login');
+      toastAlerta('Você precisa estar logado', 'info'); //Informa o tipo de toastAlerta "info".
+      navigate('/login'); //troca a rota. 
     }
   }, [token]);
 
@@ -108,7 +109,7 @@ function FormularioTema() {
             type="text"
             placeholder="Descrição"
             name='descricao'
-            className="border-2 border-slate-700 rounded p-2"
+            className="border-2 border-green-700 rounded p-2"
             value={tema.descricao}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />

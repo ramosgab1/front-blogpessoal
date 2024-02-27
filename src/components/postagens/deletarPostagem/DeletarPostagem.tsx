@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { AuthContext } from '../../../contexts/AuthContext'
 import Postagem from '../../../models/Postagem'
 import { buscar, deletar } from '../../../services/Service'
+import { toastAlerta } from '../../../util/toastAlerta/toastAlerta'
 
 function DeletarPostagem() {
   // Estado para armazenar os dados da postagem a ser deletada
@@ -25,7 +26,7 @@ function DeletarPostagem() {
       })
     } catch (error: any) {
       if (error.toString().includes('403')) {
-        alert('O token expirou, favor logar novamente')
+        toastAlerta('O token expirou, favor logar novamente', 'info') //Informa o tipo de toastAlerta "info".
         handleLogout()
       }
     }
@@ -34,7 +35,7 @@ function DeletarPostagem() {
   // Verifica se o usuário está logado
   useEffect(() => {
     if (token === '') {
-      alert('Você precisa estar logado')
+      toastAlerta('Você precisa estar logado', 'info')  //Informa o tipo de toastAlerta "info".
       navigate('/login')
     }
   }, [token])
@@ -60,10 +61,10 @@ function DeletarPostagem() {
         }
       })
 
-      alert('Postagem apagada com sucesso')
+      toastAlerta('Postagem apagada com sucesso', 'sucesso') //Informa o tipo de toastAlerta "sucesso".
 
     } catch (error) {
-      alert('Erro ao apagar a Postagem')
+      toastAlerta('Erro ao apagar a Postagem', 'erro') //Informa o tipo de toastAlerta "erro".
     }
 
     retornar()

@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import Postagem from '../../../models/Postagem'
 
 
+const defaultProfilePhotoUrl = 'https://64.media.tumblr.com/44969dac1a7a0ebbd3e61eaba18eb719/d4130b6e75c130a0-a5/s500x750/5fa4eb002059d74cc968c1234f41fa21f3dfbbb9.jpg';
+
 interface CardPostagemProps {
     post: Postagem
   }
@@ -11,7 +13,7 @@ interface CardPostagemProps {
       <div className='border-red-400 border flex flex-col rounded overflow-hidden justify-between'>
         <div>
           <div className="flex w-full bg-red-300 py-2 px-4 items-center gap-4">
-            <img src={post.usuario?.foto} className='h-12 rounded-full' alt="" />
+            <img src={post.usuario?.foto !="" ? post.usuario?.foto : defaultProfilePhotoUrl} className='h-12 rounded-full' alt="" />
             <h3 className='text-lg font-bold text-center uppercase '>{post.usuario?.nome}</h3>
           </div>
           <div className='p-4 '>
