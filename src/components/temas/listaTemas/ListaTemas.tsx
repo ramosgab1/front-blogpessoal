@@ -13,6 +13,7 @@ import { toastAlerta } from '../../../util/toastAlerta/toastAlerta';
 
 function ListaTemas(){
     const [temas, setTemas] = useState<Tema[]>([]);
+    const navigate = useNavigate();
 
     // Constante que irá acessar nosso Contexto e importar state Usuário e função handleLogout. Queremos apenas o token para validar o acesso e se o usuário está logado, por isso criaremos uma constante chamada token. 
 
