@@ -29,7 +29,7 @@ function Perfil() {
   return (
     <div className='container mx-auto mt-4 rounded-2xl overflow-hidden'>
       {/* Exibe a imagem de capa */}
-      <img className='w-full h-72 object-cover border-b-8 border-white' src={loginLogo} alt="Capa do Perfil" />
+      <img className='w-full h-72 object-cover border-b-8 border-white' src={loginLogo} alt="" />
       {/* Exibe a foto de perfil do usuário */}
       <img src={usuario.foto !="" ? usuario.foto : defaultProfilePhotoUrl} alt={`Foto de perfil de ${usuario.nome}`} className='rounded-full w-56 mx-auto mt-[-8rem] border-8 border-white relative z-10' />
       {/* Exibe o nome e o email do usuário */}
