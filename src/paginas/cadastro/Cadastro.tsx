@@ -58,7 +58,7 @@ function Cadastro() {
         toastAlerta('Usuário cadastrado com sucesso', 'sucesso') //Informa o tipo de toastAlerta "sucesso".
 
       } catch (error) {
-        alert('Erro ao cadastrar o Usuário')
+        toastAlerta('Erro ao cadastrar o Usuário', 'erro')
       }
 
     } else {
